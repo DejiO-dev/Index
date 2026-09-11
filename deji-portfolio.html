@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Oluwanifemi Onasanya — Product design</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F3ED;
+    --paper-deep:#EFEAE0;
+    --ink:#1C2521;
+    --ink-soft:#5B655F;
+    --teal:#2F6E5C;
+    --teal-soft:#DCE9E3;
+    --line:#D8D2C4;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Space Grotesk', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    margin:0;
+    color:var(--ink);
+  }
+  a{color:var(--ink); }
+  .wrap{max-width:760px; margin:0 auto; padding:0 28px;}
+
+  /* nav */
+  header.nav{
+    position:sticky; top:0; z-index:10;
+    background:rgba(246,243,237,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:760px; margin:0 auto; padding:16px 28px;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .nav-name{font-family:'Fraunces', serif; font-size:17px; font-weight:500;}
+  .nav-links{display:flex; gap:24px; font-size:14px;}
+  .nav-links a{text-decoration:none; color:var(--ink-soft);}
+  .nav-links a:hover{color:var(--teal);}
+
+  /* hero */
+  .hero{padding:72px 0 40px;}
+  .hero .kicker{
+    font-size:14px; color:var(--teal); margin-bottom:14px;
+  }
+  .hero h1{font-size:44px; line-height:1.15; max-width:600px;}
+  .hero p.lede{
+    margin-top:20px; font-size:17px; color:var(--ink-soft); max-width:520px;
+  }
+  .hero .meta{
+    margin-top:28px; display:flex; gap:20px; flex-wrap:wrap; font-size:14px; color:var(--ink-soft);
+  }
+  .hero .meta a{color:var(--ink); text-decoration:underline; text-decoration-color:var(--line); text-underline-offset:3px;}
+
+  /* waveform divider */
+  .wave{width:100%; height:40px; margin:8px 0 0;}
+  .wave svg{width:100%; height:100%; display:block;}
+  .wave path{
+    fill:none; stroke:var(--teal); stroke-width:1.6; stroke-linecap:round;
+    stroke-dasharray:900; stroke-dashoffset:900;
+    animation:draw 1.6s ease-out forwards;
+  }
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+  @media (prefers-reduced-motion: reduce){
+    .wave path{ animation:none; stroke-dashoffset:0; }
+  }
+
+  /* sections */
+  section{padding:56px 0;}
+  .section-label{
+    font-size:14px; color:var(--ink-soft); margin-bottom:10px;
+  }
+  section h2{font-size:28px; margin-bottom:28px;}
+
+  /* project block */
+  .project{
+    display:grid;
+    grid-template-columns:1.1fr 1fr;
+    gap:36px;
+    align-items:start;
+    padding:32px 0;
+    border-top:1px solid var(--line);
+  }
+  .project:first-of-type{border-top:none;}
+  .project h3{font-size:22px; margin-bottom:10px;}
+  .project .tags{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px;}
+  .tag{
+    font-size:12px; color:var(--teal); background:var(--teal-soft);
+    padding:4px 10px; border-radius:20px;
+  }
+  .project p{color:var(--ink-soft); font-size:15px; margin:0 0 10px;}
+  .status{
+    display:inline-block; font-size:12px; color:var(--ink-soft);
+    border:1px solid var(--line); padding:3px 10px; border-radius:20px; margin-top:6px;
+  }
+
+  /* visual placeholders */
+  .visual{
+    background:var(--paper-deep);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:18px;
+  }
+  .phone{
+    background:#fff; border:1px solid var(--line); border-radius:14px; padding:14px;
+  }
+  .phone .row{display:flex; align-items:center; gap:10px; margin-bottom:10px;}
+  .swatch{width:34px; height:34px; border-radius:6px; flex-shrink:0;}
+  .phone .line1{font-size:13px; font-weight:500; margin:0;}
+  .phone .line2{font-size:11px; color:var(--ink-soft); margin:0;}
+  .toggle-row{
+    display:flex; justify-content:space-between; align-items:center;
+    background:var(--paper); border-radius:8px; padding:8px 10px; margin-bottom:12px; font-size:12px;
+  }
+  .toggle{width:30px; height:17px; background:var(--ink); border-radius:20px; position:relative;}
+  .toggle::after{content:""; position:absolute; width:13px; height:13px; background:#fff; border-radius:50%; top:2px; right:2px;}
+  .search-bar{
+    border:1px solid var(--line); border-radius:8px; padding:6px 10px; font-size:12px; color:var(--ink-soft); margin-bottom:10px;
+  }
+
+  .waveform-vis{
+    display:flex; align-items:flex-end; gap:3px; height:90px; padding:10px;
+  }
+  .waveform-vis span{
+    display:block; width:5px; background:var(--teal); border-radius:2px; opacity:0.85;
+  }
+
+  /* video gallery */
+  .video-gallery{display:flex; flex-direction:column; gap:14px;}
+  .video-card{
+    display:flex; align-items:center; gap:12px;
+    text-decoration:none; color:var(--ink); cursor:pointer;
+    background:#fff; border:1px solid var(--line); border-radius:10px;
+    padding:10px; transition:border-color .15s ease;
+  }
+  .video-card:hover, .video-card:focus-visible{border-color:var(--teal);}
+  .video-card.playing{
+    display:block; padding:0; overflow:hidden; cursor:default;
+  }
+  .video-card.playing .video-embed{
+    position:relative; width:100%; padding-top:56.25%; background:var(--ink);
+  }
+  .video-card.playing .video-embed iframe{
+    position:absolute; inset:0; width:100%; height:100%; border:0;
+  }
+  .video-card.playing .video-info{padding:10px 12px;}
+
+  /* case study gallery */
+  .case-gallery{
+    display:flex; gap:16px; overflow-x:auto; padding:6px 2px 14px;
+    -webkit-overflow-scrolling:touch;
+  }
+  .case-gallery figure{
+    flex:0 0 148px; margin:0; display:flex; flex-direction:column; gap:8px;
+  }
+  .case-gallery img{
+    width:100%; border-radius:10px; border:1px solid var(--line); display:block;
+  }
+  .case-gallery figcaption{font-size:12px; color:var(--ink-soft); text-align:center;}
+  .case-arrow{
+    flex:0 0 20px; display:flex; align-items:center; justify-content:center;
+    color:var(--ink-soft); font-size:16px; align-self:center; margin-top:-24px;
+  }
+  .video-thumb{
+    position:relative; width:96px; height:64px; flex-shrink:0;
+    border-radius:6px; overflow:hidden; background:var(--ink);
+  }
+  .video-thumb img{width:100%; height:100%; object-fit:cover; display:block;}
+  .video-thumb .play{
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    background:rgba(28,37,33,0.25);
+  }
+  .video-thumb .play::after{
+    content:""; width:0; height:0;
+    border-left:9px solid #fff; border-top:6px solid transparent; border-bottom:6px solid transparent;
+    margin-left:2px;
+  }
+  .video-info .v-title{font-size:14px; font-weight:500; margin:0 0 3px;}
+  .video-info .v-meta{font-size:12px; color:var(--ink-soft); margin:0;}
+
+  /* about */
+  .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:32px;}
+  .about-grid p{color:var(--ink-soft); font-size:15px;}
+  .skill-list{list-style:none; margin:0; padding:0; font-size:14px; color:var(--ink-soft);}
+  .skill-list li{padding:6px 0; border-top:1px solid var(--line);}
+  .skill-list li:first-child{border-top:none;}
+  .skill-list span{color:var(--ink); font-weight:500;}
+
+  /* contact */
+  .contact h2{margin-bottom:16px;}
+  .contact p{color:var(--ink-soft); max-width:460px;}
+  .contact-links{margin-top:20px; display:flex; flex-direction:column; gap:10px; font-size:16px;}
+  .contact-links a{text-decoration:none; border-bottom:1px solid var(--line); padding-bottom:2px;}
+  .contact-links a:hover{border-color:var(--teal); color:var(--teal);}
+
+  footer{
+    padding:32px 0 60px; font-size:13px; color:var(--ink-soft); border-top:1px solid var(--line); margin-top:20px;
+  }
+
+  @media (max-width:640px){
+    .hero h1{font-size:32px;}
+    .project{grid-template-columns:1fr;}
+    .about-grid{grid-template-columns:1fr;}
+  }
+
+  a:focus-visible, .nav-links a:focus-visible{
+    outline:2px solid var(--teal); outline-offset:3px;
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <span class="nav-name">Deji Onasanya</span>
+    <nav class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="hero">
+    <p class="kicker">Product design — Toronto / hybrid</p>
+    <h1>Computer science student learning to see products the way designers do.</h1>
+    <p class="lede">I'm Deji, a second-year Computer Science student at Brock University with a background in creative production. I'm building a foundation in product design — starting with real problems, not just polished screens.</p>
+    <div class="meta">
+      <span>Based in St. Catharines, ON</span>
+      <a href="mailto:nife5860@gmail.com">nife5860@gmail.com</a>
+      <a href="https://www.linkedin.com/in/oluwanifemi-onasanya-6383813b7" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <div class="wave">
+      <svg viewBox="0 0 700 40" preserveAspectRatio="none">
+        <path d="M0,20 C20,20 20,5 40,5 C60,5 60,35 80,35 C100,35 100,10 120,10 C140,10 140,30 160,30 C180,30 180,8 200,8 C220,8 220,32 240,32 C260,32 260,15 280,15 C300,15 300,25 320,25 C340,25 340,3 360,3 C380,3 380,37 400,37 C420,37 420,18 440,18 C460,18 460,12 480,12 C500,12 500,28 520,28 C540,28 540,20 560,20 C580,20 580,7 600,7 C620,7 620,33 640,33 C660,33 660,20 680,20 C690,20 690,20 700,20" />
+      </svg>
+    </div>
+  </section>
+
+  <section id="work">
+    <p class="section-label">Selected work</p>
+    <h2>Two projects, two different kinds of problems</h2>
+
+    <div class="project" style="grid-template-columns:1fr;">
+      <div>
+        <div class="tags">
+          <span class="tag">Product design</span>
+          <span class="tag">UX research</span>
+        </div>
+        <h3>Rethinking Spotify's Library tab</h3>
+        <p>Spotify's Library screen mixes saved playlists and albums with algorithmic "suggested for you" content — a real complaint from users with large collections who can no longer find what they actually saved.</p>
+        <p>I explored three directions: a tabbed split between saves and recommendations, a filtered list with suggestions demoted to the bottom, and a search-first view with a "show only your saves" toggle. I chose the third: it keeps Spotify's discovery surface fully intact by default, while giving people a direct way to cut through it when they just need to find something.</p>
+        <div class="case-gallery">
+          <figure><img src="assets/case-before.png" alt="Before: mixed saved and suggested items with no separation"><figcaption>Before</figcaption></figure>
+          <figure><img src="assets/case-direction-a.png" alt="Direction A: tabbed split between Your Library and For You"><figcaption>Direction A — tabs</figcaption></figure>
+          <figure><img src="assets/case-direction-b.png" alt="Direction B: filter chips with suggestions demoted below saved items"><figcaption>Direction B — chips</figcaption></figure>
+          <figure><img src="assets/case-final-default.png" alt="Final design, default state: search bar and toggle off, mixed list"><figcaption>Final — default</figcaption></figure>
+          <figure><img src="assets/case-final-filtered.png" alt="Final design, filtered state: toggle on, only saved items shown"><figcaption>Final — filtered</figcaption></figure>
+        </div>
+        <p style="font-size:13px; color:var(--ink-soft); margin-top:-4px;">Scroll to see the full process — from the problem through three directions to the final toggle interaction.</p>
+      </div>
+    </div>
+
+    <div class="project">
+      <div>
+        <div class="tags">
+          <span class="tag">Creative direction</span>
+          <span class="tag">Video production</span>
+        </div>
+        <h3>Producing music videos with 60+ kids</h3>
+        <p>Over one summer, I produced and co-directed music video projects for three separate groups of about 20 children each — recording vocals and backing tracks in BandLab, then directing each shoot on a tight schedule.</p>
+        <p>The real design problem was pacing: keeping a shared creative vision consistent across three separate groups and skill levels, while making decisions fast enough to keep kids engaged. I made calls on shot sequencing, framing, and edit pacing under real time pressure — and learned how much a clear, simple plan matters more than a perfect one.</p>
+      </div>
+      <div class="visual">
+        <div class="video-gallery">
+          <div class="video-card" role="button" tabindex="0" data-video-id="-KD-vubshzE">
+            <div class="video-thumb"><img src="assets/thumb_light_of_mine.jpg" alt="Still from This Little Light of Mine music video"><div class="play"></div></div>
+            <div class="video-info"><p class="v-title">This Little Light of Mine</p><p class="v-meta">1:46 &middot; Group A/B</p></div>
+          </div>
+          <div class="video-card" role="button" tabindex="0" data-video-id="JA9LQBsQL10">
+            <div class="video-thumb"><img src="assets/thumb_let_there_be_light.jpg" alt="Still from Let There Be Light music video"><div class="play"></div></div>
+            <div class="video-info"><p class="v-title">Let There Be Light</p><p class="v-meta">2:16 &middot; Group F/G</p></div>
+          </div>
+          <div class="video-card" role="button" tabindex="0" data-video-id="u1VX8Lt31_o">
+            <div class="video-thumb"><img src="assets/thumb_jesus_said.jpg" alt="Still from Jesus Said I Am The Light Of The World music video"><div class="play"></div></div>
+            <div class="video-info"><p class="v-title">Jesus Said I Am the Light of the World</p><p class="v-meta">2:07 &middot; Group C/D/E</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <p class="section-label">About</p>
+    <h2>A bit more background</h2>
+    <div class="about-grid">
+      <p>I'm studying Computer Science at Brock University, which gives me an appreciation for what's actually feasible to build and how to talk with engineers about trade-offs. Outside coursework, I've spent time in creative production — Adobe Photoshop, Illustrator, and Premiere Pro — and in fast-paced customer-facing roles that taught me to listen closely to what people actually need.</p>
+      <ul class="skill-list">
+        <li><span>Design</span> — Figma (learning), Adobe Photoshop, Illustrator, Premiere Pro</li>
+        <li><span>Technical</span> — Java, Python, SQL</li>
+        <li><span>Production</span> — BandLab, live video broadcast (OBS)</li>
+        <li><span>Practice</span> — customer research instincts from retail and sales work</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <p class="section-label">Get in touch</p>
+    <h2>Let's talk</h2>
+    <p>I'm looking for a design internship where I can learn by doing real, shipped work. If a project here is interesting to you, I'd love to hear from you.</p>
+    <div class="contact-links">
+      <a href="mailto:nife5860@gmail.com">nife5860@gmail.com</a>
+      <a href="tel:+17057189063">705-718-9063</a>
+      <a href="https://www.linkedin.com/in/oluwanifemi-onasanya-6383813b7" target="_blank" rel="noopener">linkedin.com/in/oluwanifemi-onasanya</a>
+    </div>
+  </section>
+
+  <footer>
+    Oluwanifemi "Deji" Onasanya — St. Catharines, Ontario
+  </footer>
+
+</div>
+
+<script>
+  document.querySelectorAll('.video-card').forEach(function(card){
+    function play(){
+      if(card.classList.contains('playing')) return;
+      var id = card.getAttribute('data-video-id');
+      var title = card.querySelector('.v-title').textContent;
+      card.classList.add('playing');
+      card.innerHTML =
+        '<div class="video-embed"><iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1" ' +
+        'title="' + title + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>' +
+        '<div class="video-info"><p class="v-title">' + title + '</p></div>';
+    }
+    card.addEventListener('click', play);
+    card.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); play(); }
+    });
+  });
+</script>
+
+</body>
+</html>
